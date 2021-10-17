@@ -1,0 +1,18 @@
+camunda.bpm:
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Demo
+  filter:
+    create: All tasks
+  client:
+    base-url: http://localhost:8080/engine-rest #URL of Process Engine
+    lock-duration: 20000 # time in ms & external task will be locked
+    subscriptions:
+      ratingProvider:
+        variable-names: []
+        process-definition-key: externalTaskClientProcess
+      candidateRating:
+        variable-names: candidateScore
+        process-definition-key: externalTaskClientProcess
+logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
