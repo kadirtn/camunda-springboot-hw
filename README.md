@@ -13,3 +13,7 @@ Camunda 'Hello World' app with Spring boot
     }
     ```
 3. Use Camunda Modeler for modifying the bpmn flow.
+4. Use URL for accessing Camunda APP 
+`http://localhost:8080/camunda/app/welcome/default/#!/login`
+
+5. username and password: `demo:demo`
