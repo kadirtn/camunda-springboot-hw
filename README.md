@@ -20,5 +20,6 @@ Camunda 'Hello World' app with Spring boot
 
 
 ## TODO List
-1. Veritabanı postgres yapılmalı
-2. Process içerisinde DMN denenmeli
+1. Process içerisinde DMN denenmeli
+2. REST API security doğrulanmalı(mikroservis projesine taşındıktan sonra)
+3. Yazılımsal olarak process run edilebilmeli.
