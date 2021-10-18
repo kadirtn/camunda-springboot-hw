@@ -17,3 +17,8 @@ Camunda 'Hello World' app with Spring boot
 `http://localhost:8080/camunda/app/welcome/default/#!/login`
 
 5. username and password: `demo:demo`
+
+
+## TODO List
+1. Veritabanı postgres yapılmalı
+2. Process içerisinde DMN denenmeli

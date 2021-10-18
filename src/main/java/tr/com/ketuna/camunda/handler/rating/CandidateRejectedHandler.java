@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class CandidateRatingHandler implements JavaDelegate {
-
+public class CandidateRejectedHandler implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) {
         log.info("\n\n  ... LoggerDelegate invoked by "
