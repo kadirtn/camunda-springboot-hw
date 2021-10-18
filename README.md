@@ -23,3 +23,6 @@ Camunda 'Hello World' app with Spring boot
 1. Process içerisinde DMN denenmeli
 2. REST API security doğrulanmalı(mikroservis projesine taşındıktan sonra)
 3. Yazılımsal olarak process run edilebilmeli.
+
+https://camunda.com/best-practices/
+
