@@ -28,11 +28,11 @@
       <bpmn:incoming>Flow_1k14ilp</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1k14ilp" sourceRef="Gateway_18jvnzk" targetRef="Event_1q8kenl" />
-    <bpmn:serviceTask id="Activity_1cmrqet" name="Get Interview Rating (1 to 10)" camunda:type="external" camunda:topic="ratingProvider">
+    <bpmn:serviceTask id="Activity_1cmrqet" name="Get Interview Rating (1 to 10)" camunda:class="tr.com.ketuna.camunda.handler.rating.GenerateRatingHandler">
       <bpmn:incoming>Flow_02zx91w</bpmn:incoming>
       <bpmn:outgoing>Flow_1p2edgq</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0v2i77q" name="Get Rating" camunda:type="external" camunda:topic="candidateRating">
+    <bpmn:serviceTask id="Activity_0v2i77q" name="Get Rating" camunda:class="tr.com.ketuna.camunda.handler.rating.CandidateRatingHandler">
       <bpmn:incoming>Flow_18tdfkt</bpmn:incoming>
       <bpmn:outgoing>Flow_0u1omkk</bpmn:outgoing>
     </bpmn:serviceTask>
