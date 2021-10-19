@@ -28,4 +28,11 @@ https://camunda.com/best-practices/
 
 https://docs.camunda.org/manual/7.15/user-guide/process-engine/database/database-schema/
 
+https://camunda.com/best-practices/modeling-beyond-the-happy-path/
+
+https://camunda.com/best-practices/cleaning-up-historical-data/
+
+https://camunda.com/best-practices/naming-bpmn-elements/
+
+
 Test koşulduktan sonra targer/process-test-coverage/externalTaskClientProcess.html üzerinden çıktı görülebilir.

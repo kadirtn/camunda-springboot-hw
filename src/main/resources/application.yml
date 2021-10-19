@@ -1,7 +1,5 @@
 camunda.bpm:
   jpa.enabled: true
-  database:
-    schema-update: drop-create
   admin-user:
     id: demo
     password: demo
@@ -16,11 +14,6 @@ camunda.bpm:
     max-wait: 10000
 logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
