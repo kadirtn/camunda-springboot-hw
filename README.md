@@ -26,3 +26,6 @@ Camunda 'Hello World' app with Spring boot
 
 https://camunda.com/best-practices/
 
+https://docs.camunda.org/manual/7.15/user-guide/process-engine/database/database-schema/
+
+Test koşulduktan sonra targer/process-test-coverage/externalTaskClientProcess.html üzerinden çıktı görülebilir.

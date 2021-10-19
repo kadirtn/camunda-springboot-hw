@@ -4,17 +4,17 @@
     <bpmn:startEvent id="StartEvent_1" name="Start">
       <bpmn:outgoing>Flow_02zx91w</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_02zx91w" sourceRef="StartEvent_1" targetRef="Activity_1cmrqet" />
+    <bpmn:sequenceFlow id="Flow_02zx91w" sourceRef="StartEvent_1" targetRef="generateRatingHandler" />
     <bpmn:exclusiveGateway id="Gateway_1vtf64h">
       <bpmn:incoming>Flow_1p2edgq</bpmn:incoming>
       <bpmn:outgoing>Flow_18tdfkt</bpmn:outgoing>
       <bpmn:outgoing>Flow_1rj5dpk</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_1p2edgq" sourceRef="Activity_1cmrqet" targetRef="Gateway_1vtf64h" />
-    <bpmn:sequenceFlow id="Flow_18tdfkt" name="Rating &#62; 6" sourceRef="Gateway_1vtf64h" targetRef="Activity_0v2i77q">
+    <bpmn:sequenceFlow id="Flow_1p2edgq" sourceRef="generateRatingHandler" targetRef="Gateway_1vtf64h" />
+    <bpmn:sequenceFlow id="Flow_18tdfkt" name="Rating &#62; 6" sourceRef="Gateway_1vtf64h" targetRef="candidateRatingHandler">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidateScore &gt; 6}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1rj5dpk" name="Rating &#60;=6" sourceRef="Gateway_1vtf64h" targetRef="Activity_0g3nnvq">
+    <bpmn:sequenceFlow id="Flow_1rj5dpk" name="Rating &#60;=6" sourceRef="Gateway_1vtf64h" targetRef="candidateRejectedHandler">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${candidateScore &lt;= 6}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_18jvnzk">
@@ -22,32 +22,32 @@
       <bpmn:incoming>Flow_0ldsoc2</bpmn:incoming>
       <bpmn:outgoing>Flow_1k14ilp</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0u1omkk" sourceRef="Activity_0v2i77q" targetRef="Gateway_18jvnzk" />
-    <bpmn:sequenceFlow id="Flow_0ldsoc2" sourceRef="Activity_0g3nnvq" targetRef="Gateway_18jvnzk" />
-    <bpmn:endEvent id="Event_1q8kenl" name="End">
+    <bpmn:sequenceFlow id="Flow_0u1omkk" sourceRef="candidateRatingHandler" targetRef="Gateway_18jvnzk" />
+    <bpmn:sequenceFlow id="Flow_0ldsoc2" sourceRef="candidateRejectedHandler" targetRef="Gateway_18jvnzk" />
+    <bpmn:endEvent id="end_event_id" name="End">
       <bpmn:incoming>Flow_1k14ilp</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1k14ilp" sourceRef="Gateway_18jvnzk" targetRef="Event_1q8kenl" />
-    <bpmn:serviceTask id="Activity_1cmrqet" name="Get Interview Rating (1 to 10)" camunda:delegateExpression="${generateRatingHandler}">
+    <bpmn:sequenceFlow id="Flow_1k14ilp" sourceRef="Gateway_18jvnzk" targetRef="end_event_id" />
+    <bpmn:serviceTask id="generateRatingHandler" name="Get Interview Rating (1 to 10)" camunda:delegateExpression="${generateRatingHandler}">
       <bpmn:incoming>Flow_02zx91w</bpmn:incoming>
       <bpmn:outgoing>Flow_1p2edgq</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0v2i77q" name="Get Rating" camunda:delegateExpression="${candidateRatingHandler}">
+    <bpmn:serviceTask id="candidateRatingHandler" name="Get Rating" camunda:delegateExpression="${candidateRatingHandler}">
       <bpmn:incoming>Flow_18tdfkt</bpmn:incoming>
       <bpmn:outgoing>Flow_0u1omkk</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_0g3nnvq" name="Candidate Rejected" camunda:delegateExpression="${candidateRejectedHandler}">
+    <bpmn:serviceTask id="candidateRejectedHandler" name="Candidate Rejected" camunda:delegateExpression="${candidateRejectedHandler}">
       <bpmn:incoming>Flow_1rj5dpk</bpmn:incoming>
       <bpmn:outgoing>Flow_0ldsoc2</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:textAnnotation id="TextAnnotation_0bay85y">
       <bpmn:text>ratingProvider</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_02zbz6b" sourceRef="Activity_1cmrqet" targetRef="TextAnnotation_0bay85y" />
+    <bpmn:association id="Association_02zbz6b" sourceRef="generateRatingHandler" targetRef="TextAnnotation_0bay85y" />
     <bpmn:textAnnotation id="TextAnnotation_16wepoj">
       <bpmn:text>candidateRating</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_0se9018" sourceRef="Activity_0v2i77q" targetRef="TextAnnotation_16wepoj" />
+    <bpmn:association id="Association_0se9018" sourceRef="candidateRatingHandler" targetRef="TextAnnotation_16wepoj" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="externalTaskClientProcess">
@@ -101,16 +101,16 @@
       <bpmndi:BPMNShape id="Gateway_18jvnzk_di" bpmnElement="Gateway_18jvnzk" isMarkerVisible="true">
         <dc:Bounds x="795" y="285" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1q8kenl_di" bpmnElement="Event_1q8kenl">
+      <bpmndi:BPMNShape id="Event_1q8kenl_di" bpmnElement="end_event_id">
         <dc:Bounds x="952" y="292" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="960" y="335" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1mlj0xr_di" bpmnElement="Activity_1cmrqet">
+      <bpmndi:BPMNShape id="Activity_1mlj0xr_di" bpmnElement="generateRatingHandler">
         <dc:Bounds x="270" y="270" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0dvgyit_di" bpmnElement="Activity_0v2i77q">
+      <bpmndi:BPMNShape id="Activity_0dvgyit_di" bpmnElement="candidateRatingHandler">
         <dc:Bounds x="590" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0bay85y_di" bpmnElement="TextAnnotation_0bay85y">
@@ -119,7 +119,7 @@
       <bpmndi:BPMNShape id="TextAnnotation_16wepoj_di" bpmnElement="TextAnnotation_16wepoj">
         <dc:Bounds x="690" y="80" width="113" height="34" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0p759yo_di" bpmnElement="Activity_0g3nnvq">
+      <bpmndi:BPMNShape id="Activity_0p759yo_di" bpmnElement="candidateRejectedHandler">
         <dc:Bounds x="590" y="370" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_02zbz6b_di" bpmnElement="Association_02zbz6b">

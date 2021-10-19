@@ -1,5 +1,7 @@
 camunda.bpm:
   jpa.enabled: true
+  database:
+    schema-update: drop-create
   admin-user:
     id: demo
     password: demo

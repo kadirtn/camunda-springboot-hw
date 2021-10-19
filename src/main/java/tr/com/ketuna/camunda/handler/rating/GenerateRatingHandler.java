@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class GenerateRatingHandler implements JavaDelegate {
 
+//    https://camunda.com/best-practices/invoking-services-from-the-process/#_understanding_and_using_strong_java_delegates_strong
+
     @Override
     public void execute(DelegateExecution delegateExecution) {
 
