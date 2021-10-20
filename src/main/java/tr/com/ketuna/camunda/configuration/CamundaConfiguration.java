@@ -3,11 +3,12 @@ package tr.com.ketuna.camunda.configuration;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class CamundaConfiguration {
+    // camunda-bpm-spring-boot-starter-rest kullanılıyorsa workaround olarak aktive edilmeli
     private static final String CSRF_PREVENTION_FILTER = "CsrfPreventionFilter";
 
     /**
@@ -16,8 +17,8 @@ public class CamundaConfiguration {
      * org.camunda.bpm.spring.boot.starter.webapp.filter.SpringBootCsrfPreventionFilter
      * Is configured with basically a 'no-op' filter
      */
-    @Bean
-    public ServletContextInitializer csrfOverwrite() {
-        return servletContext -> servletContext.addFilter(CSRF_PREVENTION_FILTER, (request, response, chain) -> chain.doFilter(request, response));
-    }
+//    @Bean
+//    public ServletContextInitializer csrfOverwrite() {
+//        return servletContext -> servletContext.addFilter(CSRF_PREVENTION_FILTER, (request, response, chain) -> chain.doFilter(request, response));
+//    }
 }
