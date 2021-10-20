@@ -34,5 +34,4 @@ https://camunda.com/best-practices/cleaning-up-historical-data/
 
 https://camunda.com/best-practices/naming-bpmn-elements/
 
-
 Test koşulduktan sonra targer/process-test-coverage/externalTaskClientProcess.html üzerinden çıktı görülebilir.
